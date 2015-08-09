@@ -1,0 +1,42 @@
+#!/bin/bash
+
+source tools/_functions
+
+set -e
+
+build_env="local"
+
+if [[ "$1" != "" ]];
+	then
+	build_env="$1"
+fi
+
+bower_args=""
+npm_args=""
+
+if [[ "$build_env" != "local" ]]; then
+	bower_args="--quiet"
+	npm_args="--silent"
+fi
+
+if [[ "$build_env" != "local" ]]; then
+	heading "Pulling Docker images"
+	docker-compose -f docker-compose-tools.yml pull >/dev/null
+	docker-compose -f docker-compose.yml pull >/dev/null
+fi
+
+heading "Linking npm tools"
+tools/build_link
+
+heading "Installing Bower dependencies"
+tools/bower install $bower_args
+
+heading "Gulping"
+# tools/gulp
+
+tools/jekyll build
+
+if [[ "$build_env" != "local" ]]; then
+	heading "Unlinking npm tools"
+	tools/build_unlink
+fi

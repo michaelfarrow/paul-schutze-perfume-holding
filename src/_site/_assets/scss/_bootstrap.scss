@@ -1,0 +1,95 @@
+
+// Bootstrap Variable Overrides
+
+$grid-gutter-width: 2em;
+
+$container-tablet:             720px;
+$container-desktop:            940px;
+$container-large-desktop:      1140px;
+
+$border-radius-base: 0;
+$border-radius-small: 0;
+$border-radius-large: 0;
+
+
+// Import Bootstrap
+
+@import "../../../libs/bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+
+// Bootstrap CSS Overrides
+
+// Check bootstrap for actual definitions
+a {
+	&:focus,
+	&.focus,
+	&:active:focus,
+	&.active.focus {
+		outline: none;
+	}
+}
+
+.btn {
+	&:focus,
+	&.focus,
+	&:active:focus,
+	&.active.focus {
+		outline: none;
+	}
+
+	&.btn-success {
+		&:hover,
+		&:focus,
+		&.focus,
+		&:active,
+		&.active {
+			background-color: $btn-success-bg;
+		}
+	}
+}
+
+button {
+	&:focus,
+	&.focus,
+	&:active:focus,
+	&.active.focus {
+		outline: none;
+	}
+}
+
+.form-control {
+	&:focus,
+	&.focus,
+	&:active:focus,
+	&.active.focus {
+		@include box-shadow(none);
+	}
+}
+
+label {
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+
+// Mixins
+
+@mixin modernizr($classes...) {
+	$merged: '';
+
+	@each $class in $classes {
+		$merged: $merged + '.' + $class;
+	}
+
+	@at-root html#{$merged} #{&} {
+		@content;
+	}
+}
+
+@mixin changeGridGutter($gutter) {
+	$grid-gutter-width: $gutter !global;
+
+	@include make-row;
+	@include make-grid-columns;
+}

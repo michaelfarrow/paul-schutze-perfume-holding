@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source tools/_functions
+
+build_env="local"
+
+if [[ "$1" != "" ]];
+	then
+	build_env="-$1"
+fi
+
+if [[ "$build_env" != "local" ]]; then
+	heading "Pulling Docker images"
+	docker-compose pull >/dev/null
+fi
+
+heading "Starting"
+
+if [[ $(docker-compose ps | grep _nginx) ]]; then
+
+	docker-compose up --no-recreate -d db fpm nginx
+
+else
+
+	docker-compose up -d
+
+fi

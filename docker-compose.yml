@@ -1,0 +1,7 @@
+jekyll:
+  image: weyforth/jekyll
+  ports:
+    - "80:4000"
+  volumes:
+    - "./src:/src"
+  command: "serve -H 0.0.0.0 --force_polling"

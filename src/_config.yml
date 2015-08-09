@@ -1,0 +1,20 @@
+source: ./_site
+destination: ./_site_built
+markdown: redcarpet
+redcarpet:
+  extensions:
+    - no_intra_emphasis
+    - fenced_code_blocks
+    - disable_indented_code_blocks
+    - strikethrough
+    - space_after_headers
+    - superscript
+    - underline
+    - autolink
+    - tables
+    - footnotes
+highlighter: rouge
+permalink: pretty
+title: Jekyll Framework
+include:
+  - _assets

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+tools/npm link gulp
+tools/npm link gulp-add-src
+tools/npm link vinyl-paths
+tools/npm link del
+tools/npm link gulp-rev
+tools/npm link gulp-copy
+tools/npm link gulp-rename
+tools/npm link gulp-concat
+tools/npm link gulp-size
+tools/npm link gulp-bower
+tools/npm link gulp-minify-css
+tools/npm link gulp-uglify
+tools/npm link gulp-jshint
+tools/npm link jshint-stylish
+tools/npm link gulp-compass
+tools/npm link gulp-modulizr

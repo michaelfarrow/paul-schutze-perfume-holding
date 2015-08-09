@@ -1,0 +1,31 @@
+#!/bin/bash
+
+source app-build/tools/_functions
+
+set -e
+
+export COMPOSE_FILE="docker-compose-production.yml"
+
+if [[ -d app ]]; then
+
+	cd app
+
+	heading "Removing data"
+	docker-compose -f docker-compose-tools.yml run --rm data rm -rf /data/www
+
+	tools/stop production
+
+	cd ../
+
+fi
+
+heading "Copying files"
+
+rm -rf app && cp -r app-build app && echo "done"
+
+cd app
+
+tools/start production
+tools/install production
+
+echo ""

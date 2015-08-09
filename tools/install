@@ -1,0 +1,40 @@
+#!/bin/bash
+
+source tools/_functions
+
+set -e
+
+install_env="local"
+
+if [[ "$1" != "" ]];
+	then
+	install_env="$1"
+fi
+
+[ -t 1 ] || params="-T"
+
+heading "Database"
+COMPOSE_FILE="docker-compose-tools.yml" tools/run buildtools ../tools/dbisup
+
+heading "Installing"
+
+set +e
+tools/run fileaccess cat /storage/.migrated  &> /dev/null
+migrated=$?
+set -e
+
+if [[ $migrated != 0 ]]; then
+
+	echo "Migrating and seeding database"
+
+	tools/artisan migrate --force
+	tools/artisan db:seed --force
+
+	tools/run fileaccess touch /storage/.migrated
+
+else
+
+	echo "Already Installed, only migrating"
+	tools/artisan migrate --force
+
+fi

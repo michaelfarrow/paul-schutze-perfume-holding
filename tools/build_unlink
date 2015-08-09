@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+for package in $(ls www/node_modules); do
+	[[ -h "www/node_modules/$package" ]] && tools/npm unlink $package
+done

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+set -e
+tools/run buildtools bower --allow-root --config.interactive=false "$@"
