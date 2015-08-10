@@ -8,13 +8,7 @@ var modernizrTests = [
 ];
 
 var gulp       = require('gulp'),
-// 		fs         = require('fs'),
-//     del        = require('del'),
     addSrc     = require('gulp-add-src'),
-//     vinylPaths = require('vinyl-paths'),
-//     rev        = require('gulp-rev'),
-//     copy       = require('gulp-copy'),
-//     rename     = require('gulp-rename'),
     concat     = require('gulp-concat'),
     size       = require('gulp-size'),
     minify     = require('gulp-minify-css'),
@@ -22,46 +16,9 @@ var gulp       = require('gulp'),
     jshint     = require('gulp-jshint'),
     jshint_s   = require('jshint-stylish'),
     compass    = require('gulp-compass'),
-    modernizr  = require('gulp-modulizr');
+    modernizr  = require('gulp-modulizr'),
+    paths      = require('path');
 
-
-// gulp.task('version', ['build'], function() {
-// 	var files = vinylPaths();
-
-// 	emptyBuildPathFiles(
-// 		path.build().s(),
-// 		path.build().append('rev-manifest.json').s()
-// 	);
-
-// 	return gulp.src([
-// 			path.css().minified().append('*.css').s(),
-// 			path.js().minified().append('*.js').s(),
-// 			path.js().vendor().minified().append('*.js').s(),
-// 		], { base: './public' })
-// 		.pipe(rename(function (path) {
-// 			path.dirname = path.dirname.replace('/.minified', '');
-// 		}))
-// 		.pipe(gulp.dest(path.build().s()))
-// 		.pipe(files)
-// 		.pipe(rev())
-// 		.pipe(gulp.dest(path.build().s()))
-// 		.pipe(rev.manifest())
-// 		.pipe(gulp.dest(path.build().s()))
-// 		.on('end', function() {
-// 			del(files.paths, { force: true });
-// 		});
-// });
-
-// gulp.task('copy-requirejs', function() {
-// 	var files = vinylPaths();
-
-// 	return gulp.src(path.bower('requirejs/require.js').s())
-// 		.pipe(gulp.dest(path.js().vendor().s()))
-// 		.pipe(size({ title:'Original', showFiles:true }))
-// 		.pipe(uglify())
-// 		.pipe(gulp.dest(path.js().vendor().minified().s()))
-// 		.pipe(size({ title:'Optimized', showFiles:true, gzip:true }));
-// });
 
 gulp.task('copy-bootstrap-fonts', function() {
 	return gulp.src(path.bower('bootstrap-sass-official/assets/fonts/bootstrap/*').s())
@@ -79,9 +36,9 @@ gulp.task('copy-pygments-css', function() {
 gulp.task('compile-compass', function() {
 	return gulp.src(path.sass().append('*.scss').s())
 		.pipe(compass({
-			css: path.css().s(),
-			sass: path.sass().s(),
-			image: path.images().s()
+			css: paths.join(__dirname, path.css().s()),
+			sass: paths.join(__dirname, path.sass().s()),
+			image: paths.join(__dirname, path.images().s()),
 		}))
 		.pipe(minify())
 		.pipe(gulp.dest(path.css().s()));
@@ -112,37 +69,6 @@ gulp.task('lint-js', function() {
 		.pipe(jshint.reporter('fail'));
 });
 
-// gulp.task('compile-js-app', function () {
-// 	return gulp.src(path.js().append('main.app.js').s())
-// 		.pipe(requirejs({
-// 			optimize: 'none',
-// 			findNestedDependencies: true,
-// 			baseUrl: path.bower().s(),
-// 			mainConfigFile: path.js().append('config.js').s(),
-// 			name: 'main.app',
-// 		}))
-// 		.pipe(gulp.dest(path.js().compiled().s()))
-// 		.pipe(size({ title:'Original', showFiles:true }))
-// 		.pipe(uglify())
-// 		.pipe(gulp.dest(path.js().minified().s()))
-// 		.pipe(size({ title:'Optimized', showFiles:true, gzip:true }));
-// });
-
-// gulp.task('compile-js-admin', function () {
-// 	return gulp.src(path.js().append('main.admin.js').s())
-// 		.pipe(requirejs({
-// 			optimize: 'none',
-// 			findNestedDependencies: true,
-// 			baseUrl: path.bower().s(),
-// 			mainConfigFile: path.js().append('config.js').s(),
-// 			name: 'main.admin',
-// 		}))
-// 		.pipe(gulp.dest(path.js().compiled().s()))
-// 		.pipe(size({ title:'Original', showFiles:true }))
-// 		.pipe(uglify())
-// 		.pipe(gulp.dest(path.js().minified().s()))
-// 		.pipe(size({ title:'Optimized', showFiles:true, gzip:true }));
-// });
 
 gulp.task('build', [
 	'copy-bootstrap-fonts',
@@ -172,7 +98,7 @@ function path(p, f){
 };
 
 path.base = function() {
-	return new path('_site');
+	return new path('../_site');
 };
 
 path.assets = function() {
@@ -237,15 +163,3 @@ path.prototype = {
 	}
 
 }
-
-// var emptyBuildPathFiles = function(buildPath, manifest) {
-//     fs.stat(manifest, function(err, stat) {
-//         if (! err) {
-//             manifest = JSON.parse(fs.readFileSync(manifest));
-
-//             for (var key in manifest) {
-//                 del.sync(buildPath + '/' + manifest[key], { force: true });
-//             }
-//         }
-//     });
-// };

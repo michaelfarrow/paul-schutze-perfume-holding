@@ -3,7 +3,7 @@ layout: page
 title: Designer, Architect, Developer
 ---
 
-<p class="meta">11 Dec 2010 - San Francisco</p>
+**11 Dec 2010 - San Francisco**
 
 Over the last six years I've bootstrapped three successful enterprises (Cube6 Media, Gravatar, and GitHub) and failed to gain traction with a handful of others. After a lot of thought and reflections on these experiences, I've identified three major skills that should be present in order to best build a successful web application. These roles can be loosely defined as the Designer, the Architect, and the Developer.
 

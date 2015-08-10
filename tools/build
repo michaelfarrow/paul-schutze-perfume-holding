@@ -32,7 +32,7 @@ heading "Installing Bower dependencies"
 tools/bower install $bower_args
 
 heading "Gulping"
-# tools/gulp
+tools/gulp
 
 tools/jekyll build
 

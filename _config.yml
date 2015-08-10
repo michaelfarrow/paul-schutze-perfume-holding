@@ -1,5 +1,6 @@
+title: Jekyll Framework
 source: ./_site
-destination: ./_site_built
+destination: ./dist
 markdown: redcarpet
 redcarpet:
   extensions:
@@ -15,6 +16,7 @@ redcarpet:
     - footnotes
 highlighter: rouge
 permalink: pretty
-title: Jekyll Framework
 include:
   - _assets
+exclude:
+  - _assets/scss

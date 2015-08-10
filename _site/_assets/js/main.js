@@ -13,9 +13,9 @@ showTime = function() {
 	timeStr += ((seconds < 10) ? ":0" : ":") + seconds;
 	timeStr += (hours >= 12) ? " P.M." : " A.M.";
 
-	document.title = timeStr + " " + title;
+	document.title = ":) " + timeStr + " " + title;
 
 	setTimeout(showTime, 1000);
-}
+};
 
 showTime();

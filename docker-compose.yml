@@ -3,5 +3,5 @@ jekyll:
   ports:
     - "80:4000"
   volumes:
-    - "./src:/src"
+    - "./:/src"
   command: "serve -H 0.0.0.0 --force_polling"
