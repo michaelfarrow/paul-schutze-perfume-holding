@@ -2,6 +2,6 @@
 
 set -e
 
-for package in $(ls www/node_modules); do
-	[[ -h "www/node_modules/$package" ]] && tools/npm unlink $package
+for package in $(ls build_tools/node_modules); do
+	[[ -h "build_tools/node_modules/$package" ]] && tools/npm unlink $package
 done
