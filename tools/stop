@@ -5,6 +5,6 @@ source tools/_functions
 if [[ $(docker-compose ps | grep Up) ]]; then
 
 	heading "Stopping"
-	COMPOSE_FILE="$COMPOSE_FILE" docker-compose stop nginx db fpm
+	docker-compose stop jekyll
 
 fi

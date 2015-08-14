@@ -2,23 +2,11 @@
 
 source tools/_functions
 
-build_env="local"
-
-if [[ "$1" != "" ]];
-	then
-	build_env="-$1"
-fi
-
-if [[ "$build_env" != "local" ]]; then
-	heading "Pulling Docker images"
-	docker-compose pull >/dev/null
-fi
-
 heading "Starting"
 
-if [[ $(docker-compose ps | grep _nginx) ]]; then
+if [[ $(docker-compose ps | grep _jekyll) ]]; then
 
-	docker-compose up --no-recreate -d db fpm nginx
+	docker-compose up --no-recreate -d jekyll
 
 else
 
