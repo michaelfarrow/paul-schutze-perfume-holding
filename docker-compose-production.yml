@@ -1,7 +1,7 @@
 jekyll:
   extends:
     file: docker-compose-common.yml
-    service: node
+    service: jekyll
   volumes:
     - "./:/src"
   restart: always
