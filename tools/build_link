@@ -2,7 +2,6 @@
 
 set -e
 
-tools/npm link gulp
 tools/npm link gulp-add-src
 tools/npm link vinyl-paths
 tools/npm link del

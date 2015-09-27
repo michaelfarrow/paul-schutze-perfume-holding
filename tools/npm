@@ -1,4 +1,4 @@
 #!/bin/bash
 
 set -e
-tools/run buildtools npm "$@"
+tools/run buildtools npm --no-bin-links "$@"
