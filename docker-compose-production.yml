@@ -5,3 +5,4 @@ jekyll:
   volumes:
     - "./:/src"
   restart: always
+  command: "serve -H 0.0.0.0 --no-watch"
