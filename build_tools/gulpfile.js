@@ -15,10 +15,51 @@ var gulp       = require('gulp'),
     uglify     = require('gulp-uglify'),
     jshint     = require('gulp-jshint'),
     jshint_s   = require('jshint-stylish'),
+    rename     = require('gulp-rename'),
     compass    = require('gulp-compass'),
     modernizr  = require('gulp-modulizr'),
+    del        = require('del'),
+    favicons   = require('gulp-favicons'),
     paths      = require('path');
 
+
+gulp.task('del-generated-favicon-html', function () {
+    return del([
+    	path.includes().append('favicons.html').s()
+    ], {
+    	force: true
+    });
+});
+
+gulp.task('del-temp-favicon-source', function () {
+    return del([
+    	path.includes().append('._favicons.html').s()
+    ], {
+    	force: true
+    });
+});
+
+gulp.task('generate-favicons', ['del-generated-favicon-html'], function () {
+    return gulp.src(path.includes().append('_favicons.html').s())
+        .pipe(rename('._favicons.html'))
+        .pipe(gulp.dest(path.includes().s()))
+        .pipe(favicons({
+            files: {
+            	dest: '../' + path.images().append('favicons').s(),
+            	html: path.includes().append('favicons.html').s(),
+            	iconsPath: '/_assets/img/favicons/'
+            },
+            settings: { background: '#FFFFFF' }
+        }));
+});
+
+gulp.task('create-favicons', ['generate-favicons'], function () {
+    return del([
+    	path.includes().append('._favicons.html').s()
+    ], {
+    	force: true
+    });
+});
 
 gulp.task('copy-bootstrap-fonts', function() {
 	return gulp.src(path.bower('bootstrap-sass-official/assets/fonts/bootstrap/*').s())
@@ -71,6 +112,7 @@ gulp.task('lint-js', function() {
 
 
 gulp.task('build', [
+	'create-favicons',
 	'copy-bootstrap-fonts',
 	'copy-pygments-css',
 	'custom-modernizr',
@@ -99,6 +141,14 @@ function path(p, f){
 
 path.base = function() {
 	return new path('../_site');
+};
+
+path.layouts = function() {
+	return path.base().append('_layouts');
+};
+
+path.includes = function() {
+	return path.base().append('_includes');
 };
 
 path.assets = function() {

@@ -1,4 +1,4 @@
 buildtools:
-  image: weyforth/jekyll-buildtools
+  image: weyforth/jekyll-buildtools:1.0
   volumes:
     - "./:/src"

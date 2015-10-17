@@ -5,3 +5,5 @@ set -e
 for package in $(ls build_tools/node_modules); do
 	[[ -h "build_tools/node_modules/$package" ]] && tools/npm unlink $package
 done
+
+rm -rf build_tools/node_modules/*

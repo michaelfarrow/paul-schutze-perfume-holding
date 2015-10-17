@@ -38,6 +38,8 @@ dwsync.xml
 
 /dist/
 /bundle
+/_site/_assets/img/favicons/
+/_site/_includes/favicons.html
 /_site/_assets/js/vendor/*
 !/_site/_assets/js/vendor/.gitkeep
 /_site/_assets/css/*

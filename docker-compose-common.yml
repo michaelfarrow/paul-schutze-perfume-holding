@@ -1,5 +1,5 @@
 jekyll:
-  image: weyforth/jekyll
+  image: weyforth/jekyll:ruby-2.1
   ports:
     - "80:4000"
   environment:

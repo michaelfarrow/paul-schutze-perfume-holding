@@ -6,15 +6,13 @@
     <title>{{ page.title }}</title>
     <meta name="description" content="{{ site.description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
     <link rel="stylesheet" href="{% ministamp /_assets/css/vendor/pygments/perldoc.css /_assets/css/vendor/pygments/perldoc.css %}">
     <link rel="stylesheet" href="{% ministamp /_assets/css/main.css /_assets/css/main.css %}">
+    {% include favicons.html %}
     <script src="{% ministamp /_assets/js/vendor/modernizr.js /_assets/js/vendor/modernizr.js %}"></script>
-  </head>
+
+    </head>
   <body>
-        
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -32,13 +30,10 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
     <div class="container">
       {{ content }}
     </div>
-
     <script src="{% ministamp /_assets/js/main.js /_assets/js/main.js %}"></script>
-
     {% if jekyll.environment == 'production' %}
       <script>
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -49,4 +44,4 @@
         ga('create','{{ site.ga_tracking_id }}','auto');ga('send','pageview');
       </script>
     {% endif %}
-</html>
+</body></html>

@@ -1,4 +1,6 @@
 
+var DONE = true;
+
 // var title = document.title;
 
 // showTime = function() {
