@@ -16,6 +16,7 @@
     "gulp-compass": "2.1.0",
     "gulp-modulizr": "0.0.2",
     "gulp-rename": "1.2.2",
-    "gulp-favicons": "1.0.9"
+    "gulp-favicons": "1.0.9",
+    "gulp-util": "3.0.6"
   }
 }
