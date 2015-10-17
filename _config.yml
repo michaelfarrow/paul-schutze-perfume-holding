@@ -20,3 +20,4 @@ include:
   - _assets
 exclude:
   - _assets/scss
+ga_tracking_id: UA-XXXXX-X

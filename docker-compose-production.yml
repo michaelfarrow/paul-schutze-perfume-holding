@@ -2,7 +2,5 @@ jekyll:
   extends:
     file: docker-compose-common.yml
     service: jekyll
-  volumes:
-    - "./:/src"
   restart: always
-  command: "serve -H 0.0.0.0 --no-watch"
+  command: "jeykll serve -H 0.0.0.0 --no-watch"

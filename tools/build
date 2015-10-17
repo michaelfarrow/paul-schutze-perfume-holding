@@ -34,6 +34,9 @@ tools/npm install $npm_args
 heading "Installing Bower dependencies"
 tools/bower install $bower_args
 
+heading "Installing Ruby dependencies"
+tools/bundler install --quiet
+
 heading "Gulping"
 tools/gulp
 

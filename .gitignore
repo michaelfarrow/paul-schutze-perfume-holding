@@ -35,11 +35,12 @@ dwsync.xml
 .svn
 .CVS
 .idea
-/dist/
 
+/dist/
+/bundle
 /_site/_assets/js/vendor/*
-/_site/_assets/js/vendor/.gitkeep
+!/_site/_assets/js/vendor/.gitkeep
 /_site/_assets/css/*
-/_site/_assets/css/.gitkeep
+!/_site/_assets/css/.gitkeep
 /_site/_assets/fonts/vendor/*
-/_site/_assets/fonts/vendor/.gitkeep
+!/_site/_assets/fonts/vendor/.gitkeep

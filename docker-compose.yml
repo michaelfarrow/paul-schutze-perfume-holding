@@ -4,3 +4,4 @@ jekyll:
     service: jekyll
   volumes:
     - "./:/src"
+    - "./bundle:/bundle"

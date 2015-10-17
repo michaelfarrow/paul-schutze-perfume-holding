@@ -2,4 +2,10 @@ jekyll:
   image: weyforth/jekyll
   ports:
     - "80:4000"
-  command: "serve -H 0.0.0.0 --force_polling"
+  environment:
+    GEM_PATH: /bundle:/root/.gem/ruby/2.1.0:/usr/local/lib/ruby/gems/2.1.0:/usr/local/bundle
+    PATH: /bundle/bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  command: "jekyll serve -H 0.0.0.0 --force_polling"
+  volumes:
+    - "./:/src"
+    - "./bundle:/bundle"
