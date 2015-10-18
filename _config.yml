@@ -16,6 +16,7 @@ redcarpet:
     - footnotes
 highlighter: rouge
 permalink: pretty
+array: []
 include:
   - _assets
 exclude:
