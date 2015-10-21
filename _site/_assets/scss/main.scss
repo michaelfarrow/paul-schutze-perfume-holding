@@ -1,9 +1,235 @@
 @import "bootstrap";
 
+$colour-yellow: #FDCB3C;
+$colour-grey: #424649;
+
+@mixin font-body {
+	font-size: 14px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+
+	@media (min-width: $screen-xs-min){
+		font-size: 16px;
+	}
+}
+
 body {
-	padding-top: 51px;
+	background-color: black;
+	@include font-body;
+	color: white;
+	margin-bottom: 2em;
+
+	@media (min-width: $screen-sm-min) {
+		margin-bottom: 5em;
+	}
+}
+
+.container-fluid {
+	@media (min-width: $screen-lg-min) {
+		width: $screen-lg-min;
+	}
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-size: 1.5em;
+	margin-top: 1.25em;
+	margin-bottom: 0.625em;
+	line-height: 1.4;
+}
+
+p {
+	margin-bottom: 1.0em;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	border-bottom: 1px solid white;
+
+	@include transition-property(border-bottom-color);
+	@include transition-duration(0.3s);
+
+	&:hover,
+	&:focus {
+		color: white;
+		text-decoration: none;
+		border-bottom-color: transparent;
+	}
 }
 
 table {
   @extend .table, .table-striped;
+}
+
+#page-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+
+	.row {
+		height: 100%;
+	}
+
+	.left,
+	.right {
+		height: 100%;
+		position: relative;
+
+		.img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center top;
+			display: none;
+
+			&.default {
+				display: block;
+			}
+		}
+	}
+
+	.left {
+		.img {
+			background-position: right top;
+		}
+	}
+}
+
+#logo-wrapper {
+	width: 100%;
+	z-index: 15;
+	margin-top: 7.5em;
+	position: absolute;
+	top: 0;
+
+	@media (min-width: $screen-md-min){
+		margin-top: 11.5%;
+		position: fixed;
+	}
+
+	.col-logo {
+		position: relative;
+	}
+}
+
+#logo {
+	padding: 0;
+	margin: -3.3em auto 0 auto;
+	right: 0;
+	bottom: 0;
+	width: 300px * 0.8;
+	height: 80px * 0.8;
+	background-image: url(../img/logo.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+
+	@include modernizr(backgroundsize){
+		background-image: url(../img/logo@2x.png);
+	}
+
+	.alt {
+		display: none;
+	}
+
+	@media (min-width: $screen-xs-min){
+		width: 300px;
+		height: 80px;
+		margin: -3.6em auto 0 auto;
+	}
+
+	@media (min-width: $screen-sm-min){
+		position: absolute;
+		margin: 17% 0 0 0;
+	}
+}
+
+form {
+	margin-bottom: 1.5em;
+
+	.row {
+		@include changeGridGutter(0);
+	}
+
+	.form-control,
+	.btn {
+		@include font-body;
+		border: none;
+		width: 100%;
+		height: 30px;
+	}
+
+	.btn {
+		background-color: black;
+		color: white;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		text-align: center;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: black;
+			color: lighten($colour-grey, 20%);
+		}
+	}
+}
+
+#page-wrapper {
+	margin-top: 10.5em;
+	position: relative;
+	z-index: 20;
+
+	@media (min-width: $screen-md-min){
+		margin-top: 17%;
+	}
+}
+
+.content-row {
+	@include changeGridGutter(0);
+}
+
+.content-box {
+	background-color: $colour-grey;
+	background-color: rgba($colour-grey, 0.85);
+	padding-top: 0.1em;
+	padding-bottom: 0.1em;
+
+	@media (min-width: $screen-sm-min){
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.inner {
+		margin: 2em 1.5em;
+
+		@media (min-width: $screen-sm-min){
+			margin: 2em 2.5em;
+		}
+	}
+
+	h2 {
+		margin-top: 0;
+	}
+
+	.hr {
+		height: 2px;
+		background-color: white;
+		width: 33%;
+
+		&.top {
+			margin-bottom: 1.5em;
+		}
+
+		&.bottom {
+			margin-top: 1.5em;
+		}
+
+	}
 }

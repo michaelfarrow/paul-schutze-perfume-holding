@@ -72,6 +72,15 @@ gulp.task('copy-bootstrap-fonts', function() {
         .pipe(size({ title:'Bootstrap Fonts', gzip:true }));
 });
 
+gulp.task('copy-vendor-js', function() {
+    return gulp.src([
+            path.bower('jquery/dist/jquery.js').s(),
+            path.bower('jquery-cycle2/build/jquery.cycle2.js').s()
+        ])
+        .pipe(uglify())
+        .pipe(gulp.dest(path.js().vendor().s()));
+});
+
 gulp.task('copy-pygments-css', function() {
     return gulp.src(path.bower('pygments/css/*').s())
         .pipe(minify())
@@ -120,6 +129,7 @@ gulp.task('lint-js', function() {
 gulp.task('build', [
     'create-favicons',
     'copy-bootstrap-fonts',
+    'copy-vendor-js',
     'copy-pygments-css',
     'custom-modernizr',
     'compile-compass',

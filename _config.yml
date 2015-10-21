@@ -1,4 +1,4 @@
-title: Jekyll Framework
+title: Paul Schütze Perfume
 source: ./_site
 destination: ./dist
 markdown: redcarpet
@@ -21,4 +21,4 @@ include:
   - _assets
 exclude:
   - _assets/scss
-ga_tracking_id: UA-XXXXX-X
+ga_tracking_id: UA-68744000-1
