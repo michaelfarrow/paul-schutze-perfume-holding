@@ -3,4 +3,4 @@ jekyll:
     file: docker-compose-common.yml
     service: jekyll
   restart: always
-  command: "jeykll serve -H 0.0.0.0 --no-watch"
+  command: "bundle exec jeykll serve -H 0.0.0.0 --no-watch"
