@@ -12,8 +12,8 @@ notify:
 deploy:
   bash:
     script:
-      - ssh deploy@178.62.49.97 'rm -rf app-build'
-      - scp -o StrictHostKeyChecking=no -P 22 -r . deploy@178.62.49.97:app-build/
-      - ssh deploy@178.62.49.97 app-build/tools/deploy
+      - ssh deploy@46.101.22.223 'rm -rf app-build'
+      - scp -o StrictHostKeyChecking=no -P 22 -r . deploy@46.101.22.223:app-build/
+      - ssh deploy@46.101.22.223 app-build/tools/deploy
     when:
       branch: master
