@@ -25,4 +25,4 @@ For details of stockists and availability simply add your email
 	</div>
 </form>
 
-or alternatively email info@paulschutzeperume.co.uk
+or alternatively email info@paulschutzeperfume.co.uk
